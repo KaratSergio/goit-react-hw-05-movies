@@ -1,99 +1,34 @@
-import useSwr from 'swr';
+import axios from 'axios';
 
-const BASE_URL = 'https://api.themoviedb.org/3';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 const API_KEY = '6167a2fbe619d64566c427d4bc6ed1cb';
 
-const fetcher = async url => {
-  const response = await fetch(url);
-
-  if (!response.ok) {
-    throw new Error('Failed fetch data');
+export const fetchData = async (url, params) => {
+  try {
+    const response = await axios.get(url, { params: { ...params, api_key: API_KEY } });
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching data from ${url}:`, error);
+    throw new Error('Failed to fetch data');
   }
-
-  return response.json();
 };
 
 export const useTrendingMovies = () => {
-  const { data, error } = useSwr(
-    `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`,
-    fetcher
-  );
-
-  if (error) {
-    console.error('Error loading trending movies:', error);
-  }
-
-  return {
-    trendingMovies: data?.results || [],
-    isLoading: !error && !data,
-    isError: error,
-  };
+  return fetchData('trending/movie/day');
 };
 
-export const useSearchMovies = query => {
-  const { data, error } = useSwr(
-    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`,
-    fetcher
-  );
-
-  if (error) {
-    console.error(`Error searching movies for query "${query}":`, error);
-  }
-
-  return {
-    searchResults: data?.results || [],
-    isLoading: !error && !data,
-    isError: error,
-  };
+export const useSearchMovies = (query) => {
+  return fetchData('search/movie', { params: { query } });
 };
 
-export const useMovieDetails = id => {
-  const { data, error } = useSwr(
-    `${BASE_URL}/movie/${id}?api_key=${API_KEY}`,
-    fetcher
-  );
-
-  if (error) {
-    console.error(`Error getting movie details for id "${id}":`, error);
-  }
-
-  return {
-    movieDetails: data || {},
-    isLoading: !error && !data,
-    isError: error,
-  };
+export const useMovieDetails = (id) => {
+  return fetchData(`movie/${id}`);
 };
 
-export const useMovieCredits = id => {
-  const { data, error } = useSwr(
-    `${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`,
-    fetcher
-  );
-
-  if (error) {
-    console.error(`Error getting movie credits for id "${id}":`, error);
-  }
-
-  return {
-    movieCredits: data?.cast || [],
-    isLoading: !error && !data,
-    isError: error,
-  };
+export const useMovieCredits = (id) => {
+  return fetchData(`movie/${id}/credits`);
 };
 
-export const useMovieReviews = id => {
-  const { data, error } = useSwr(
-    `${BASE_URL}/movie/${id}/reviews?api_key=${API_KEY}`,
-    fetcher
-  );
-
-  if (error) {
-    console.error(`Error getting movie reviews for id "${id}":`, error);
-  }
-
-  return {
-    movieReviews: data?.results || [],
-    isLoading: !error && !data,
-    isError: error,
-  };
+export const useMovieReviews = (id) => {
+  return fetchData(`movie/${id}/reviews`);
 };
