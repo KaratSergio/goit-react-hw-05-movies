@@ -21,7 +21,8 @@ const MovieDetails = () => {
 
   if (!details) return null;
 
-  const { title, poster_path, release_date, vote_average, overview, genres } = details;
+  const { title, poster_path, release_date, vote_average, overview, genres } =
+    details;
   const releaseYear = (release_date || '').slice(0, 4);
   const score = Math.round(vote_average * 10);
 
@@ -42,7 +43,7 @@ const MovieDetails = () => {
           <h2>Overview</h2>
           <p>{overview}</p>
           <h2>Genres</h2>
-          <p>{genres && genres.map((genre) => genre.name).join(', ')}</p>
+          <p>{genres && genres.map(genre => genre.name).join(', ')}</p>
           <h2>Additional Information</h2>
           <ul>
             <li>
