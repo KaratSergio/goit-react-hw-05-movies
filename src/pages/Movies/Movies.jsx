@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import * as API from '../../services/http-requests';
 
@@ -56,7 +56,6 @@ const Movies = () => {
 };
 
 export default Movies;
-
 
 // import { useState } from 'react';
 // import { useSearchParams } from 'react-router-dom';
