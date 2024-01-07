@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-
 import * as API from '../../services/http-requests';
-
 import MovieList from '../../components/MovieList/MovieList';
+
+import { HomeWrapper, Title } from './HomeStyles';
 
 const Home = () => {
   const [trending, setTrending] = useState([]);
@@ -21,10 +21,10 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h2>Trending movies</h2>
+    <HomeWrapper>
+      <Title>Trending movies</Title>
       <MovieList movies={trending} />
-    </div>
+    </HomeWrapper>
   );
 };
 
