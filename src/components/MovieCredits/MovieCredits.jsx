@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as API from '../../services/http-requests';
 
-const MovieCredits = () => {
+export const MovieCredits = () => {
   const [credits, setCredits] = useState([]);
   const { id } = useParams();
   const baseURL = 'https://image.tmdb.org/t/p/w200';

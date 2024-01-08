@@ -2,7 +2,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useLocation, useParams, Outlet, Link } from 'react-router-dom';
 import { useMovieDetails } from '../../services/http-requests';
 
-const MovieDetails = () => {
+export const MovieDetails = () => {
   const [details, setDetails] = useState([]);
   const { id } = useParams();
   const location = useLocation();

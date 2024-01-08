@@ -4,7 +4,7 @@ import MovieList from '../../components/MovieList/MovieList';
 
 import { HomeWrapper, Title } from './Home.styled';
 
-const Home = () => {
+export const Home = () => {
   const [trending, setTrending] = useState([]);
 
   useEffect(() => {

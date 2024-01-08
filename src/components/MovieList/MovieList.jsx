@@ -1,14 +1,13 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   MovieListWrapper,
   MovieListItem,
-  MovieListLink,
   MoviePoster,
   MovieTitle,
 } from './MovieList.styled';
 
-const MovieList = ({ movies }) => {
+export const MovieList = ({ movies }) => {
   const location = useLocation();
   const baseURL = 'https://image.tmdb.org/t/p/w200';
 
@@ -16,13 +15,13 @@ const MovieList = ({ movies }) => {
     <MovieListWrapper>
       {movies.map(({ title, id, poster_path }) => (
         <MovieListItem key={id}>
-          <MovieListLink href={`/movies/${id}`} state={{ from: location }}>
+          <Link to={`/movies/${id}`} state={{ from: location }}>
             <MoviePoster
               src={poster_path ? `${baseURL}${poster_path}` : ''}
               alt={title}
             />
             <MovieTitle>{title}</MovieTitle>
-          </MovieListLink>
+          </Link>
         </MovieListItem>
       ))}
     </MovieListWrapper>

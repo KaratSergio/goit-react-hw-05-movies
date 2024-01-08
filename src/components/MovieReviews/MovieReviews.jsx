@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as API from '../../services/http-requests';
 
-const Reviews = () => {
+export const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const { id } = useParams();
 

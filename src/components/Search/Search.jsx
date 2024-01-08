@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const Search = ({ value, onChange, onSubmit }) => {
+export const Search = ({ value, onChange, onSubmit }) => {
   return (
     <form onSubmit={onSubmit}>
       <label>

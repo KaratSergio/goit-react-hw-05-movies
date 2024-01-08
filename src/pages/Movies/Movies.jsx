@@ -5,7 +5,7 @@ import * as API from '../../services/http-requests';
 import Search from '../../components/Search/Search';
 import MovieList from '../../components/MovieList/MovieList';
 
-const Movies = () => {
+export const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
