@@ -6,7 +6,7 @@ import {
   MovieListLink,
   MoviePoster,
   MovieTitle,
-} from './MovieListStyles';
+} from './MovieList.styled';
 
 const MovieList = ({ movies }) => {
   const location = useLocation();

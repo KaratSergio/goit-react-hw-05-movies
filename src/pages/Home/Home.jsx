@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import * as API from '../../services/http-requests';
 import MovieList from '../../components/MovieList/MovieList';
 
-import { HomeWrapper, Title } from './HomeStyles';
+import { HomeWrapper, Title } from './Home.styled';
 
 const Home = () => {
   const [trending, setTrending] = useState([]);
