@@ -4,7 +4,7 @@ export const Search = ({ value, onChange, onSubmit }) => {
   return (
     <form onSubmit={onSubmit}>
       <label>
-        Movie name:
+        Search movie:
         <input
           type="text"
           name="searchName"

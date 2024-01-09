@@ -10,8 +10,12 @@ export const Reviews = () => {
   useEffect(() => {
     const fetchMovieReviews = async () => {
       try {
-        const results = await API.fetchData(`movie/${id}/reviews`);
-        setReviews(results);
+        const response = await API.fetchData(`movie/${id}/reviews`);
+        const reviewsArray =
+          response.results && Array.isArray(response.results)
+            ? response.results
+            : [];
+        setReviews(reviewsArray);
       } catch (error) {
         console.error('Something went wrong, please try again', error);
       }
@@ -20,7 +24,7 @@ export const Reviews = () => {
     fetchMovieReviews();
   }, [id]);
 
-  if (!reviews || reviews.length === 0) {
+  if (!Array.isArray(reviews) || reviews.length === 0) {
     return (
       <div>
         <h2>No reviews for this movie</h2>
@@ -45,7 +49,7 @@ export const Reviews = () => {
 Reviews.propTypes = {
   reviews: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       author: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
     })

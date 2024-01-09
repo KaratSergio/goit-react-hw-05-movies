@@ -27,9 +27,8 @@ export const Movies = () => {
 
     const fetchMovies = async () => {
       try {
-        const { results } = await API.fetchData('search/movie', {
-          params: { query: movieSearch },
-        });
+        const { results } = await API.fetchData('search/movie', { query: movieSearch });
+
         setMovies(results);
       } catch (error) {
         console.error('Something went wrong, please try again', error);
@@ -42,7 +41,7 @@ export const Movies = () => {
   return (
     <div>
       <div>
-        <Search onSubmit={handleSubmit}>
+      <Search value={query} onChange={handleChange} onSubmit={handleSubmit}>
           <label>
             Search:
             <input type="text" value={query} onChange={handleChange} />
