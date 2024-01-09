@@ -1,30 +1,32 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useLocation, useParams, Outlet, Link } from 'react-router-dom';
-import { useMovieDetails } from '../../services/http-requests';
+import { fetchData } from '../../services/http-requests';
 
 export const MovieDetails = () => {
-  const [details, setDetails] = useState([]);
+  const [details, setDetails] = useState(null);
   const { id } = useParams();
   const location = useLocation();
   const from = location.state?.from ?? '/';
   const baseURL = 'https://image.tmdb.org/t/p/w400';
 
-  const { data: results, error } = useMovieDetails(id);
-
   useEffect(() => {
-    if (error) {
-      console.error('Something went wrong, please try again', error);
-    } else {
-      setDetails(results);
-    }
-  }, [results, error]);
+    const fetchMovieDetails = async () => {
+      try {
+        const results = await fetchData(`movie/${id}`);
+        setDetails(results);
+      } catch (error) {
+        console.error('Something went wrong, please try again', error);
+      }
+    };
+
+    fetchMovieDetails();
+  }, [id]);
 
   if (!details) return null;
 
-  const { title, poster_path, release_date, vote_average, overview, genres } =
-    details;
+  const { title, poster_path, release_date, vote_average, overview, genres } = details;
   const releaseYear = (release_date || '').slice(0, 4);
-  const score = Math.round(vote_average * 10);
+  const score = !isNaN(vote_average) ? Math.round(vote_average * 10) : 0;
 
   return (
     <div>
@@ -43,7 +45,7 @@ export const MovieDetails = () => {
           <h2>Overview</h2>
           <p>{overview}</p>
           <h2>Genres</h2>
-          <p>{genres && genres.map(genre => genre.name).join(', ')}</p>
+          <p>{genres && genres.map((genre) => genre.name).join(', ')}</p>
           <h2>Additional Information</h2>
           <ul>
             <li>
@@ -67,3 +69,4 @@ export const MovieDetails = () => {
 };
 
 export default MovieDetails;
+
