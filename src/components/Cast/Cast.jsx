@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as API from '../../services/http-requests';
 
-export const MovieCredits = () => {
+export const Cast = () => {
   const [credits, setCredits] = useState([]);
   const { id } = useParams();
   const baseURL = 'https://image.tmdb.org/t/p/w200';
@@ -51,7 +51,7 @@ export const MovieCredits = () => {
   );
 };
 
-MovieCredits.propTypes = {
+Cast.propTypes = {
   credits: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -62,4 +62,4 @@ MovieCredits.propTypes = {
   ),
 };
 
-export default MovieCredits;
+export default Cast;
