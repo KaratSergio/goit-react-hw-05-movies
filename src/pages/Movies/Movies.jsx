@@ -50,7 +50,7 @@ export const Movies = () => {
           </label>
           <button type="submit">Search</button>
         </Search>
-        <MovieList movies={movies} />
+        {movies.length > 0 && <MovieList movies={movies} />}
       </div>
     </Container>
   );
