@@ -5,6 +5,8 @@ import * as API from '../../services/http-requests';
 import Search from '../../components/Search/Search';
 import MovieList from '../../components/MovieList/MovieList';
 
+import { Container } from './Movies.styled'
+
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
@@ -39,7 +41,7 @@ export const Movies = () => {
   }, [movieSearch]);
 
   return (
-    <div>
+    <Container>
       <div>
       <Search value={query} onChange={handleChange} onSubmit={handleSubmit}>
           <label>
@@ -50,7 +52,7 @@ export const Movies = () => {
         </Search>
         <MovieList movies={movies} />
       </div>
-    </div>
+    </Container>
   );
 };
 

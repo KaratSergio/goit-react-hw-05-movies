@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 
+import { Form, Label, Input, Button, } from './Search.styled'
+
 export const Search = ({ value, onChange, onSubmit }) => {
   return (
-    <form onSubmit={onSubmit}>
-      <label>
+    <Form onSubmit={onSubmit}>
+      <Label>
         Search movie:
-        <input
+        <Input
           type="text"
           name="searchName"
           value={value}
@@ -14,13 +16,13 @@ export const Search = ({ value, onChange, onSubmit }) => {
           autoFocus
           placeholder="Movie name..."
         />
-      </label>
-      <button type="submit">
+      </Label>
+      <Button type="submit">
         <span role="img" aria-label="Search">
           🔍
         </span>
-      </button>
-    </form>
+      </Button>
+    </Form>
   );
 };
 

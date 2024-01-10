@@ -6,6 +6,9 @@ export const MovieListWrapper = styled.div`
   gap: 40px 30px;
   flex-wrap: wrap;
   justify-content: center;
+  background: radial-gradient(circle at center, #114e79, #011);
+  box-shadow: 0 0 14px rgb(80, 123, 176);
+  padding: 20px;
 `;
 
 export const MovieListItem = styled.div`
