@@ -1,10 +1,11 @@
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   MovieListWrapper,
   MovieListItem,
   MoviePoster,
   MovieTitle,
+  MovieListLink,
 } from './MovieList.styled';
 
 export const MovieList = ({ movies }) => {
@@ -15,13 +16,13 @@ export const MovieList = ({ movies }) => {
     <MovieListWrapper>
       {movies.map(({ title, id, poster_path }) => (
         <MovieListItem key={id}>
-          <Link to={`/movies/${id}`} state={{ from: location }}>
+          <MovieListLink to={`/movies/${id}`} state={{ from: location }}>
             <MoviePoster
               src={poster_path ? `${baseURL}${poster_path}` : ''}
               alt={title}
             />
             <MovieTitle>{title}</MovieTitle>
-          </Link>
+          </MovieListLink>
         </MovieListItem>
       ))}
     </MovieListWrapper>
