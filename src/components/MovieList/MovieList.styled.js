@@ -27,7 +27,7 @@ export const MovieListLink = styled(Link)`
 
 export const MoviePoster = styled.img`
   max-width: 100%;
-  height: auto;
+  height: 225px;
   border-radius: 8px;
 
   &:hover {
