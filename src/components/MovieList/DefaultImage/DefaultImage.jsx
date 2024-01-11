@@ -1,4 +1,4 @@
-import noPosterImage from '../../../images/film.png';
+import noPosterImage from '../../../images/no-poster.png';
 import { Container, StyledImage, Title } from './DefaultImage.styled';
 
 const DefaultImage = () => {
