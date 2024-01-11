@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 
-export const Main = styled.div`
-  margin-top: 36px;
-`;
-
 export const CastContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 35px;
+  margin-top: 36px;
 `;
 
 export const ActorCard = styled.div`
@@ -23,18 +20,18 @@ export const Photo = styled.img`
 `;
 
 export const ActorName = styled.p`
-color: #fff;
+  color: #fff;
 `;
 
 export const ActorRole = styled.p`
-color: #74b6c5;
-font-size: 14px;
-padding-top: 5px;
+  color: #74b6c5;
+  font-size: 14px;
+  padding-top: 5px;
 `;
 
 export const ErrorText = styled.p`
-color: #74b6c5;
-font-size: 34px;
-margin-top: 20px;
-text-align: center;
+  color: #74b6c5;
+  font-size: 34px;
+  margin-top: 20px;
+  text-align: center;
 `;

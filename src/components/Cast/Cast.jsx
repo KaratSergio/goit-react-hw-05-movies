@@ -7,7 +7,6 @@ import DefaultPhoto from './DefaultPhoto/DefaultPhoto';
 import {
   CastContainer,
   Photo,
-  Main,
   ActorCard,
   ActorName,
   ActorRole,
@@ -41,7 +40,6 @@ export const Cast = () => {
   }
 
   return (
-    <Main>
       <CastContainer>
         {credits.map(({ profile_path, name, character, id }) => {
           return (
@@ -59,7 +57,6 @@ export const Cast = () => {
           );
         })}
       </CastContainer>
-    </Main>
   );
 };
 
