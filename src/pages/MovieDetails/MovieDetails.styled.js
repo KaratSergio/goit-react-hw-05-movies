@@ -40,47 +40,6 @@ export const DetailsContainer = styled.div`
   box-shadow: 0 0 14px rgb(80, 123, 176);
 `;
 
-// ===============RatingBar======================
-export const RatingBar = styled.div`
-  width: 100%;
-  height: 20px;
-  background-color: #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-top: 8px;
-  position: relative; 
-`;
-
-export const FilledRating = styled.div`
-  height: 100%;
-  width: ${({ percentage }) => `${percentage}%`};
-  background-color: #74b6c5;
-  border-radius: 5px;
-  position: relative; 
-`;
-
-export const RatingText = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-160%, -50%);
-  color: #d1cb21;
-  font-weight: bold;
-  
-`;
-
-export const Accent = styled.span`
-  text-transform: uppercase;
-  padding: 3px;
-  border-radius: 8px;
-`;
-
-export const Score = styled.span`
-  margin-left: 10px;
-  font-weight: 600;
-`;
-// ==============================================
-
 export const Poster = styled.img`
   border-radius: 10px;
   width: 350px;
@@ -95,7 +54,7 @@ export const MovieInfo = styled.div`
 export const Title = styled.h2`
   font-size: 56px;
   line-height: 1;
-  margin-bottom: 22px;
+  margin-bottom: 32px;
   color: #74b6c5;
 `;
 

@@ -1,26 +1,9 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useLocation, useParams, Outlet } from 'react-router-dom';
 import { fetchData } from '../../services/http-requests';
+import RatingBar from '../../components/RatingBar/RatingBar';
 
-import {
-  Loader,
-  BackBtn,
-  Wrapper,
-  Poster,
-  DetailsContainer,
-  MovieInfo,
-  Title,
-  SubTitle,
-  TextContent,
-  Accent,
-  Score,
-  InfoList,
-  InfoItem,
-  InfoLink,
-  RatingBar,
-  FilledRating,
-  RatingText,
-} from './MovieDetails.styled';
+import * as Styled from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [details, setDetails] = useState(null);
@@ -44,57 +27,56 @@ const MovieDetails = () => {
 
   if (!details) return null;
 
-  const { title, poster_path, release_date, vote_average, overview, genres } = details;
+  const { title, poster_path, release_date, vote_average, overview, genres } =
+    details;
   const releaseYear = (release_date || '').slice(0, 4);
   const score = !isNaN(vote_average) ? Math.round(vote_average * 10) : 0;
 
   return (
-    <Wrapper>
-      <BackBtn to={from}>
-        Go back
-      </BackBtn>
-      <DetailsContainer>
-        <Poster src={poster_path && `${baseURL}${poster_path}`} alt={title} />
-        <MovieInfo>
-          <Title>
+    <Styled.Wrapper>
+      <Styled.BackBtn to={from}>Go back</Styled.BackBtn>
+      <Styled.DetailsContainer>
+        <Styled.Poster
+          src={poster_path && `${baseURL}${poster_path}`}
+          alt={title}
+        />
+        <Styled.MovieInfo>
+          <Styled.Title>
             {title} ({releaseYear})
-          </Title>
-          <RatingBar>
-            <FilledRating percentage={score} />
-          <RatingText >
-            <Accent>popularity rating</Accent>
-            <Score>{score}%</Score>
-          </RatingText>
-          </RatingBar>
-          <SubTitle>Overview</SubTitle>
-          <TextContent>{overview}</TextContent>
-          <SubTitle>Genres</SubTitle>
-          <TextContent>{genres && genres.map(genre => genre.name).join(', ')}</TextContent>
-          <SubTitle>Additional Information</SubTitle>
-          <InfoList>
-            <InfoItem>
-              <InfoLink to="cast" state={{ from }}>
+          </Styled.Title>
+          <RatingBar score={score} />{' '}
+          <Styled.SubTitle>Overview</Styled.SubTitle>
+          <Styled.TextContent>{overview}</Styled.TextContent>
+          <Styled.SubTitle>Genres</Styled.SubTitle>
+          <Styled.TextContent>
+            {genres && genres.map(genre => genre.name).join(', ')}
+          </Styled.TextContent>
+          <Styled.SubTitle>Additional Information</Styled.SubTitle>
+          <Styled.InfoList>
+            <Styled.InfoItem>
+              <Styled.InfoLink to="cast" state={{ from }}>
                 Cast
-              </InfoLink>
-            </InfoItem>
-            <InfoItem>
-              <InfoLink to="reviews" state={{ from }}>
+              </Styled.InfoLink>
+            </Styled.InfoItem>
+            <Styled.InfoItem>
+              <Styled.InfoLink to="reviews" state={{ from }}>
                 Reviews
-              </InfoLink>
-            </InfoItem>
-          </InfoList>
-        </MovieInfo>
-      </DetailsContainer>
+              </Styled.InfoLink>
+            </Styled.InfoItem>
+          </Styled.InfoList>
+        </Styled.MovieInfo>
+      </Styled.DetailsContainer>
       <Suspense
         color={'#301934'}
         loading={true}
-        fallback={<Loader aria-label="Loading Spinner" data-testid="loader" />}
+        fallback={
+          <Styled.Loader aria-label="Loading Spinner" data-testid="loader" />
+        }
       >
         <Outlet />
       </Suspense>
-    </Wrapper>
+    </Styled.Wrapper>
   );
 };
 
 export default MovieDetails;
-
