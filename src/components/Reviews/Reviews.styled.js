@@ -13,10 +13,6 @@ export const AuthorBox = styled.div`
   background-color: #9fd3de;
   border-top-right-radius: 10px;
   margin-top: 10px;
-
-  :not(:first-child) {
-    margin-top: 10px;
-  }
 `;
 
 export const AuthorName = styled.p`
