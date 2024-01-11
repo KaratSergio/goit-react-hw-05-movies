@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as API from '../../services/http-requests';
 
+import { CastContainer } from './Cast.styled';
+
 export const Cast = () => {
   const [credits, setCredits] = useState([]);
   const { id } = useParams();
@@ -31,7 +33,7 @@ export const Cast = () => {
 
   return (
     <div>
-      <div>
+      <CastContainer>
         {credits.map(({ profile_path, name, character, id }) => {
           return (
             <div key={id}>
@@ -46,7 +48,7 @@ export const Cast = () => {
             </div>
           );
         })}
-      </div>
+      </CastContainer>
     </div>
   );
 };

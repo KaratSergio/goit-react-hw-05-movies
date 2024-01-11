@@ -14,7 +14,7 @@ export const Search = ({ value, onChange, onSubmit }) => {
           onChange={onChange}
           autoComplete="off"
           autoFocus
-          placeholder="Movie name..."
+          placeholder="enter a name..."
         />
       </Label>
       <Button type="submit">

@@ -6,6 +6,7 @@ export const Container = styled.div`
   max-width: 1660px;
   margin: auto;
   max-width: 100%;
+  background-color: rgb(22, 22, 22);
 `;
 
 export const Header = styled.header`
@@ -13,9 +14,8 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
-  padding: 0 2rem;
-  height: 4rem;
+  height: 64px;
+  padding: 0 32px;
 
   > nav {
     display: flex;
@@ -27,13 +27,13 @@ export const Link = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: 500;
 
   &.active {
-    color: white;
+    color: tomato;
     font-weight: 700;
-    background-color: #301934;
+    background-color: #114e79;
   }
 `;
 

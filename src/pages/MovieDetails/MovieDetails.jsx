@@ -1,12 +1,32 @@
 import { useEffect, useState, Suspense } from 'react';
-import { useLocation, useParams, Outlet, Link } from 'react-router-dom';
+import { useLocation, useParams, Outlet } from 'react-router-dom';
 import { fetchData } from '../../services/http-requests';
 
-export const MovieDetails = () => {
+import {
+  Loader,
+  BackBtn,
+  Wrapper,
+  Poster,
+  DetailsContainer,
+  MovieInfo,
+  Title,
+  SubTitle,
+  TextContent,
+  Accent,
+  Score,
+  InfoList,
+  InfoItem,
+  InfoLink,
+  RatingBar,
+  FilledRating,
+  RatingText,
+} from './MovieDetails.styled';
+
+const MovieDetails = () => {
   const [details, setDetails] = useState(null);
   const { id } = useParams();
   const location = useLocation();
-  const from = location.state?.from ?? '/';
+  const from = location.state?.from || '/';
   const baseURL = 'https://image.tmdb.org/t/p/w400';
 
   useEffect(() => {
@@ -29,42 +49,50 @@ export const MovieDetails = () => {
   const score = !isNaN(vote_average) ? Math.round(vote_average * 10) : 0;
 
   return (
-    <div>
-      <button type="button">
-        <Link to={from}>Go back</Link>
-      </button>
-      <div>
-        {poster_path && <img src={`${baseURL}${poster_path}`} alt={title} />}
-        <div>
-          <h1>
+    <Wrapper>
+      <BackBtn to={from}>
+        Go back
+      </BackBtn>
+      <DetailsContainer>
+        <Poster src={poster_path && `${baseURL}${poster_path}`} alt={title} />
+        <MovieInfo>
+          <Title>
             {title} ({releaseYear})
-          </h1>
-          <p>
-            User Score: <span>{score}%</span>
-          </p>
-          <h2>Overview</h2>
-          <p>{overview}</p>
-          <h2>Genres</h2>
-          <p>{genres && genres.map((genre) => genre.name).join(', ')}</p>
-          <h2>Additional Information</h2>
-          <ul>
-            <li>
-              <Link to="cast" state={{ from }}>
+          </Title>
+          <RatingBar>
+            <FilledRating percentage={score} />
+          <RatingText >
+            <Accent>Rating</Accent>
+            <Score>{score}%</Score>
+          </RatingText>
+          </RatingBar>
+          <SubTitle>Overview</SubTitle>
+          <TextContent>{overview}</TextContent>
+          <SubTitle>Genres</SubTitle>
+          <TextContent>{genres && genres.map(genre => genre.name).join(', ')}</TextContent>
+          <SubTitle>Additional Information</SubTitle>
+          <InfoList>
+            <InfoItem>
+              <InfoLink to="cast" state={{ from }}>
                 Cast
-              </Link>
-            </li>
-            <li>
-              <Link to="reviews" state={{ from }}>
+              </InfoLink>
+            </InfoItem>
+            <InfoItem>
+              <InfoLink to="reviews" state={{ from }}>
                 Reviews
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <Suspense fallback={<div>Loading...</div>}>
+              </InfoLink>
+            </InfoItem>
+          </InfoList>
+        </MovieInfo>
+      </DetailsContainer>
+      <Suspense
+        color={'#301934'}
+        loading={true}
+        fallback={<Loader aria-label="Loading Spinner" data-testid="loader" />}
+      >
         <Outlet />
       </Suspense>
-    </div>
+    </Wrapper>
   );
 };
 
