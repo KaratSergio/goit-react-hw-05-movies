@@ -43,7 +43,7 @@ export const DetailsContainer = styled.div`
 // ===============RatingBar======================
 export const RatingBar = styled.div`
   width: 100%;
-  height: 30px;
+  height: 20px;
   background-color: #ddd;
   border-radius: 5px;
   overflow: hidden;
@@ -63,14 +63,13 @@ export const RatingText = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
+  transform: translate(-160%, -50%);
+  color: #d1cb21;
   font-weight: bold;
+  
 `;
 
 export const Accent = styled.span`
-  color: white;
-  background-color: #94a830;
   text-transform: uppercase;
   padding: 3px;
   border-radius: 8px;
@@ -96,13 +95,13 @@ export const MovieInfo = styled.div`
 export const Title = styled.h2`
   font-size: 56px;
   line-height: 1;
-  margin-bottom: 32px;
+  margin-bottom: 22px;
   color: #74b6c5;
 `;
 
 export const SubTitle = styled.h3`
   font-size: 24px;
-  margin-bottom: 16px;
+  margin: 16px 0;
   color: #74b6c5;
 `;
 
@@ -110,7 +109,6 @@ export const TextContent = styled.p`
   text-shadow: 1px 1px 1px rgb(24, 25, 25);
   font-size: 21px;
   line-height: 1.5;
-  margin-bottom: 16px;
 `;
 
 export const InfoList = styled.ul`

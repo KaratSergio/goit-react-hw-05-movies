@@ -62,7 +62,7 @@ const MovieDetails = () => {
           <RatingBar>
             <FilledRating percentage={score} />
           <RatingText >
-            <Accent>Rating</Accent>
+            <Accent>popularity rating</Accent>
             <Score>{score}%</Score>
           </RatingText>
           </RatingBar>
