@@ -76,6 +76,7 @@ export const InfoList = styled.ul`
 `;
 
 export const InfoItem = styled.li`
+  display: flex;
   width: 80px;
   text-align: center;
   border: 1px solid #301934;
@@ -84,21 +85,31 @@ export const InfoItem = styled.li`
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     font-weight 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 1px 1px 1px black;
 
-  :hover {
-    border: none;
-    color: #74b6c5;
-    font-weight: 900;
+  &:hover {
+    background-color: #cceeff;
   }
 `;
 
 export const InfoLink = styled(Link)`
+  width: 80px;
+  border: 1px solid #301934;
   color: #301934;
   font-weight: 500;
+  border-radius: 10px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    font-weight 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 1px 1px 1px black;
 
-  :hover {
-    font-weight: 900;
-    color: #301934;
+  &:hover {
+    background-color: #cceeff;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px #99c2ff;
   }
 `;
 
