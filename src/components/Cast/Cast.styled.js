@@ -19,6 +19,7 @@ export const Photo = styled.img`
   height: 220px;
   object-fit: cover;
   margin-bottom: 10px;
+  border: 3px solid #fff;
 `;
 
 export const ActorName = styled.p`

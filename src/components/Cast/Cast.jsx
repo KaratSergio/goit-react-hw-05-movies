@@ -2,8 +2,16 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as API from '../../services/http-requests';
+import DefaultPhoto from './DefaultPhoto/DefaultPhoto';
 
-import { CastContainer, Photo, Main, ActorCard, ActorName , ActorRole } from './Cast.styled';
+import {
+  CastContainer,
+  Photo,
+  Main,
+  ActorCard,
+  ActorName,
+  ActorRole,
+} from './Cast.styled';
 
 export const Cast = () => {
   const [credits, setCredits] = useState([]);
@@ -37,10 +45,11 @@ export const Cast = () => {
         {credits.map(({ profile_path, name, character, id }) => {
           return (
             <ActorCard key={id}>
-              <Photo
-                src={profile_path ? `${baseURL}${profile_path}` : ''}
-                alt={name}
-              />
+              {profile_path ? (
+                <Photo src={`${baseURL}${profile_path}`} alt={name} />
+              ) : (
+                <DefaultPhoto />
+              )}
               <div>
                 <ActorName>{name}</ActorName>
                 <ActorRole>Role: {character}</ActorRole>
