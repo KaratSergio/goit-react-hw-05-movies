@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as API from '../../services/http-requests';
 
+import { Main, AuthorBox, AuthorName, Commit, ErrorText } from './Reviews.styled'
+
 export const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const { id } = useParams();
@@ -27,22 +29,24 @@ export const Reviews = () => {
   if (!Array.isArray(reviews) || reviews.length === 0) {
     return (
       <div>
-        <h2>No reviews for this movie</h2>
+        <ErrorText>No reviews for this movie</ErrorText>
       </div>
     );
   }
 
   return (
-    <div>
+    <Main>
       <div>
         {reviews.map(({ author, content, id }) => (
           <div key={id}>
-            <p>Author: {author}</p>
-            <p>{content}</p>
+            <AuthorBox>
+              <AuthorName>Author: {author}</AuthorName>
+            </AuthorBox>
+            <Commit>{content}</Commit>
           </div>
         ))}
       </div>
-    </div>
+    </Main>
   );
 };
 
