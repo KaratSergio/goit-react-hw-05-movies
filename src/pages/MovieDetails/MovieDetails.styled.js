@@ -138,7 +138,7 @@ export const InfoItem = styled.li`
 export const InfoLink = styled(Link)`
   color: #301934;
   font-weight: 500;
-  
+
   :hover {
     font-weight: 900;
     color: #301934;

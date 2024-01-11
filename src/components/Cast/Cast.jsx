@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as API from '../../services/http-requests';
 
-import { CastContainer } from './Cast.styled';
+import { CastContainer, Photo, Main, ActorCard, ActorName , ActorRole } from './Cast.styled';
 
 export const Cast = () => {
   const [credits, setCredits] = useState([]);
@@ -32,24 +32,24 @@ export const Cast = () => {
   }
 
   return (
-    <div>
+    <Main>
       <CastContainer>
         {credits.map(({ profile_path, name, character, id }) => {
           return (
-            <div key={id}>
-              <img
+            <ActorCard key={id}>
+              <Photo
                 src={profile_path ? `${baseURL}${profile_path}` : ''}
                 alt={name}
               />
               <div>
-                <p>{name}</p>
-                <p>Character: {character}</p>
+                <ActorName>{name}</ActorName>
+                <ActorRole>Role: {character}</ActorRole>
               </div>
-            </div>
+            </ActorCard>
           );
         })}
       </CastContainer>
-    </div>
+    </Main>
   );
 };
 
