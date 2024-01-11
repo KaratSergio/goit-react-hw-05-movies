@@ -11,6 +11,7 @@ import {
   ActorCard,
   ActorName,
   ActorRole,
+  ErrorText,
 } from './Cast.styled';
 
 export const Cast = () => {
@@ -34,7 +35,7 @@ export const Cast = () => {
   if (!credits || credits.length === 0) {
     return (
       <div>
-        <h2>No credits information for this movie</h2>
+        <ErrorText>No credits information for this movie</ErrorText>
       </div>
     );
   }
