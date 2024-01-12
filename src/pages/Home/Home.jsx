@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as API from '../../services/http-requests';
 import MovieList from '../../components/MovieList/MovieList';
+import { toast } from 'react-hot-toast';
 
 import { HomeWrapper, Title } from './Home.styled';
 
@@ -16,7 +17,7 @@ export const Home = () => {
       const { results } = await API.fetchData('trending/movie/day');
       setTrending(results);
     } catch (error) {
-      console.error('Something went wrong, please try again', error);
+      toast.error('Something went wrong, please try again');
     }
   };
 

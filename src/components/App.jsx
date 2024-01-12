@@ -3,6 +3,7 @@ import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 
 import Layout from './Layout/Layout';
 import ErrorCheck from './ErrorCheck/ErrorCheck';
+import { Toaster } from 'react-hot-toast';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Movies = lazy(() => import('../pages/Movies/Movies'));
@@ -26,6 +27,7 @@ export const App = () => {
             </Route>
           </Route>
         </Routes>
+        <Toaster position="top-right" />
       </Suspense>
       </ErrorCheck>
     </Router>

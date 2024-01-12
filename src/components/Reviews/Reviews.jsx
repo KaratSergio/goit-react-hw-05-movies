@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { toast } from 'react-hot-toast';
 import * as API from '../../services/http-requests';
 
 import { Main, AuthorBox, AuthorName, Commit, ErrorText } from './Reviews.styled'
@@ -19,7 +20,7 @@ export const Reviews = () => {
             : [];
         setReviews(reviewsArray);
       } catch (error) {
-        console.error('Something went wrong, please try again', error);
+        toast.error('Something went wrong, please try again');
       }
     };
 

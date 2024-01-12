@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { toast } from 'react-hot-toast';
 import * as API from '../../services/http-requests';
 import DefaultPhoto from './DefaultPhoto/DefaultPhoto';
 
@@ -24,7 +25,7 @@ export const Cast = () => {
         const { cast: results } = await API.fetchData(`movie/${id}/credits`);
         setCredits(results);
       } catch (error) {
-        console.error('Something went wrong, please try again', error);
+        toast.error('Something went wrong, please try again');
       }
     };
 
@@ -40,23 +41,23 @@ export const Cast = () => {
   }
 
   return (
-      <CastContainer>
-        {credits.map(({ profile_path, name, character, id }) => {
-          return (
-            <ActorCard key={id}>
-              {profile_path ? (
-                <Photo src={`${baseURL}${profile_path}`} alt={name} />
-              ) : (
-                <DefaultPhoto />
-              )}
-              <div>
-                <ActorName>{name}</ActorName>
-                <ActorRole>Role: {character}</ActorRole>
-              </div>
-            </ActorCard>
-          );
-        })}
-      </CastContainer>
+    <CastContainer>
+      {credits.map(({ profile_path, name, character, id }) => {
+        return (
+          <ActorCard key={id}>
+            {profile_path ? (
+              <Photo src={`${baseURL}${profile_path}`} alt={name} />
+            ) : (
+              <DefaultPhoto />
+            )}
+            <div>
+              <ActorName>{name}</ActorName>
+              <ActorRole>Role: {character}</ActorRole>
+            </div>
+          </ActorCard>
+        );
+      })}
+    </CastContainer>
   );
 };
 

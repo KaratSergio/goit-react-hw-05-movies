@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import * as API from '../../services/http-requests';
 
 import Search from '../../components/Search/Search';
 import MovieList from '../../components/MovieList/MovieList';
 
-import { Container } from './Movies.styled'
+import { Container } from './Movies.styled';
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -29,11 +30,13 @@ export const Movies = () => {
 
     const fetchMovies = async () => {
       try {
-        const { results } = await API.fetchData('search/movie', { query: movieSearch });
+        const { results } = await API.fetchData('search/movie', {
+          query: movieSearch,
+        });
 
         setMovies(results);
       } catch (error) {
-        console.error('Something went wrong, please try again', error);
+        toast.error('Something went wrong, please try again');
       }
     };
 
@@ -43,7 +46,7 @@ export const Movies = () => {
   return (
     <Container>
       <div>
-      <Search value={query} onChange={handleChange} onSubmit={handleSubmit}>
+        <Search value={query} onChange={handleChange} onSubmit={handleSubmit}>
           <label>
             Search:
             <input type="text" value={query} onChange={handleChange} />

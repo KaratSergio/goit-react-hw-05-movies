@@ -1,6 +1,7 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useLocation, useParams, Outlet } from 'react-router-dom';
 import { fetchData } from '../../services/http-requests';
+import { toast } from 'react-hot-toast';
 import RatingBar from '../../components/RatingBar/RatingBar';
 import noPoster from '../../images/no-poster.png';
 
@@ -19,7 +20,7 @@ const MovieDetails = () => {
         const results = await fetchData(`movie/${id}`);
         setDetails(results);
       } catch (error) {
-        console.error('Something went wrong, please try again', error);
+        toast.error('Something went wrong, please try again');
       }
     };
 
