@@ -2,6 +2,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useLocation, useParams, Outlet } from 'react-router-dom';
 import { fetchData } from '../../services/http-requests';
 import RatingBar from '../../components/RatingBar/RatingBar';
+import noPoster from '../../images/no-poster.png';
 
 import * as Styled from './MovieDetails.styled';
 
@@ -36,10 +37,12 @@ const MovieDetails = () => {
     <Styled.Wrapper>
       <Styled.BackBtn to={from}>Go back</Styled.BackBtn>
       <Styled.DetailsContainer>
-        <Styled.Poster
-          src={poster_path && `${baseURL}${poster_path}`}
-          alt={title}
-        />
+        <Styled.PosterBox>
+          <Styled.Poster
+            src={poster_path ? `${baseURL}${poster_path}` : noPoster}
+            alt={title}
+          />
+        </Styled.PosterBox>
         <Styled.MovieInfo>
           <Styled.Title>
             {title} ({releaseYear})

@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
+export const StarContainer = styled.div`
+  position: relative;
+  display: flex;
+`;
+
 export const RatingText = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-448%, -220%);
+  top: -20px;
+  left: 0;
   color: #114e79;
   font-weight: bold;
 `;
@@ -20,11 +24,6 @@ export const Score = styled.span`
   font-weight: 600;
 `;
 
-export const StarContainer = styled.div`
-position: relative;
-  display: flex;
-`;
-
 export const StarIcon = styled.span`
   display: inline-block;
 `;
@@ -32,5 +31,5 @@ export const StarIcon = styled.span`
 export const SvgIcon = styled.svg`
   width: 40px;
   height: 40px;
-  fill: ${(props) => props.starColor || 'transparent'};
+  fill: ${props => props.fillColor || 'transparent'};
 `;

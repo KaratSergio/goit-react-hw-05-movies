@@ -40,13 +40,19 @@ export const DetailsContainer = styled.div`
   box-shadow: 0 0 14px rgb(80, 123, 176);
 `;
 
+export const PosterBox = styled.div`
+  width: 350px;
+  height: 525px;
+`;
+
 export const Poster = styled.img`
   border-radius: 10px;
-  width: 350px;
-  height: auto;
+  object-fit: cover;
 `;
 
 export const MovieInfo = styled.div`
+width: 960px;
+height: 525px
   display: block;
   margin-left: 56px;
 `;
@@ -95,7 +101,7 @@ export const InfoItem = styled.li`
 export const InfoLink = styled(Link)`
   width: 80px;
   border: 1px solid #301934;
-  color: #301934;
+  color: tomato;
   font-weight: 500;
   border-radius: 10px;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
